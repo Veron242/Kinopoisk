@@ -1,0 +1,329 @@
+{
+	"id": "0c0d31ba-d61f-40de-8c30-03b22a9ab127",
+	"name": "Кинопоиск",
+	"timestamp": "2025-05-27T19:15:38.473Z",
+	"collection_id": "41557333-b9deac4a-5253-4c81-abde-bb416e8a68d6",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 9,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-05-27T19:15:33.517Z",
+	"totalFail": 1,
+	"results": [
+		{
+			"id": "91856eb8-10ad-45eb-be49-14d87db5b757",
+			"name": "Поиск фильма по названию",
+			"url": "https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=10&query=\"Один дома\"",
+			"time": 362,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				362
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "fe946535-4c4d-4c62-9cbc-2f31cb4b9b27",
+			"name": "Поиск фильма по ID",
+			"url": "https://api.kinopoisk.dev/v1.4/movie/8124",
+			"time": 105,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Тело ответа содержит название фильма": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Тело ответа содержит название фильма": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				105
+			],
+			"allTests": [
+				{
+					"Тело ответа содержит название фильма": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "4538764b-a6d8-4ef2-adc1-6801584d7715",
+			"name": "Получение списка фильмов с рейтингом выше 8",
+			"url": "https://api.kinopoisk.dev/v1.4/movie?rating.imdb=8-10",
+			"time": 111,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				111
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "41ec63a6-cbe8-4e04-bbe9-4db2376a21ae",
+			"name": "Получить список стран, жанров и т.д.",
+			"url": "https://api.kinopoisk.dev/v1/movie/possible-values-by-field?field=genres.name",
+			"time": 102,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				102
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d08e0040-bbd0-44ab-ab50-2754d2f51318",
+			"name": "Поиск по названию с пустым значением",
+			"url": "https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=10&query=\"\"",
+			"time": 92,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 404": false
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				92
+			],
+			"allTests": [
+				{
+					"Status code is 404": false
+				}
+			]
+		},
+		{
+			"id": "947d8af2-b9e2-42a6-b50a-4022c5485d2e",
+			"name": "Поиск без токена",
+			"url": "https://api.kinopoisk.dev/v1/movie/possible-values-by-field?field=genres.name",
+			"time": 88,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				88
+			],
+			"allTests": [
+				{
+					"Status code is 401": true
+				}
+			]
+		},
+		{
+			"id": "aba7eec3-2536-42c8-8a2d-7bc1bb4e1369",
+			"name": "Поиск с несуществующим рейтингом",
+			"url": "https://api.kinopoisk.dev/v1.4/movie?rating.imdb=10-11",
+			"time": 92,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				92
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "72602fa0-3834-4e28-b3ef-b4fce633809a",
+			"name": "Поиск списка жанров используя метод OPTIONS",
+			"url": "https://api.kinopoisk.dev/v1/movie/possible-values-by-field?field=genres.name",
+			"time": 87,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				87
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "23f21fee-1850-4d05-b1af-6b817efcbf84",
+			"name": "Поиск фильма в далеком будущем",
+			"url": "https://api.kinopoisk.dev/v1.4/movie?year=2125&page=1&limit=10",
+			"time": 90,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				90
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "2e4cddcd-fc49-4f72-94cc-eacd3589994b",
+			"name": "Получить список фильмов за 1850 год в жанре детектив",
+			"url": "https://api.kinopoisk.dev/v1.4/movie?year=1850&genres.name=detektiv",
+			"time": 99,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				99
+			],
+			"allTests": [
+				{
+					"Status code is 400": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1228,
+	"collection": {
+		"requests": [
+			{
+				"id": "91856eb8-10ad-45eb-be49-14d87db5b757",
+				"method": "GET"
+			},
+			{
+				"id": "fe946535-4c4d-4c62-9cbc-2f31cb4b9b27",
+				"method": "GET"
+			},
+			{
+				"id": "4538764b-a6d8-4ef2-adc1-6801584d7715",
+				"method": "GET"
+			},
+			{
+				"id": "41ec63a6-cbe8-4e04-bbe9-4db2376a21ae",
+				"method": "GET"
+			},
+			{
+				"id": "d08e0040-bbd0-44ab-ab50-2754d2f51318",
+				"method": "GET"
+			},
+			{
+				"id": "947d8af2-b9e2-42a6-b50a-4022c5485d2e",
+				"method": "GET"
+			},
+			{
+				"id": "aba7eec3-2536-42c8-8a2d-7bc1bb4e1369",
+				"method": "GET"
+			},
+			{
+				"id": "72602fa0-3834-4e28-b3ef-b4fce633809a",
+				"method": "OPTIONS"
+			},
+			{
+				"id": "23f21fee-1850-4d05-b1af-6b817efcbf84",
+				"method": "GET"
+			},
+			{
+				"id": "2e4cddcd-fc49-4f72-94cc-eacd3589994b",
+				"method": "GET"
+			}
+		]
+	}
+}
